@@ -67,7 +67,7 @@ setInterval(() => {
 
 
      client.on('message',async message => {
-  if(message.content.startsWith(prefix + "role info")) {
+  if(message.content.startsWith(prefix + "roleinfo")) {
   let args = message.content.split(" ").slice(1).join(" ");
 if (!args[0]) return message.channel.send("__Please Mention A Role!__")
         let role = message.mentions.roles.first() || message.guild.roles.cache.get(args[0]) || message.guild.roles.cache.find(r => r.name.toLowerCase() === args.join(' ').toLocaleLowerCase());
@@ -97,7 +97,7 @@ if (!args[0]) return message.channel.send("__Please Mention A Role!__")
 /////////
 
     client.on('message',async message => {
-  if(message.content.startsWith(prefix + "channel info")) { 
+  if(message.content.startsWith(prefix + "channelinfo")) { 
   let args = message.content.split(" ").slice(1)
 let channel = message.mentions.channels.first() || client.guilds.cache.get(message.guild.id).channels.cache.get(args[0]) || message.guild.channels.cache.find(r => r.name.toLowerCase() === args.join(' ').toLocaleLowerCase()) || message.channel;
         if (!channel) return message.channel.send("**Channel Not Found!**");
@@ -119,7 +119,7 @@ let channel = message.mentions.channels.first() || client.guilds.cache.get(messa
 
 
      client.on('message',async  message => {
-  if(message.content.startsWith(prefix + "my invites")) {
+  if(message.content.startsWith(prefix + "invites")) {
     let args = message.content.split(" ").slice(1)
 let member = await message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
             let invites = await message.guild.fetchInvites()
@@ -151,7 +151,7 @@ let member = await message.mentions.members.first() || message.guild.members.cac
 let member_r = message.mentions.members.first() || message.member,
   user = member_r.user;
 let embed = new Discord.MessageEmbed()
-  .addField('this member have this Roles:', member_r.roles.cache.map(r => `${r}`).join(', '), true)
+  .addField('There is Member Have This Role:', member_r.roles.cache.map(r => `${r}`).join(', '), true)
 
 message.channel.send(embed)
 }})
@@ -186,7 +186,7 @@ const flags = {
     var embed = new Discord.MessageEmbed()
         .setColor('BLACK')
         .setTitle(`${member} Badges`)
-            .setDescription(`❯ All Flags:** ${userFlags.length ? userFlags.map(flag => flags[flag]).join(', ') : 'None'}`)
+            .setDescription(`**❯ All Flags: ${userFlags.length ? userFlags.map(flag => flags[flag]).join(', ') : 'None'}**`)
             msg.channel.send(embed)
    
 }
@@ -210,7 +210,7 @@ client.on('message',async message => {
       const embed = new Discord.MessageEmbed()
         .setTitle(`${member.username}'s avatar`)
         .setImage(avatar)
-        .setColor("BLACK")
+        .setColor("RANDOM")
         message.channel.send(embed);
     
   }})
@@ -297,56 +297,57 @@ const member = message.mentions.members.last() || message.guild.members.cache.ge
 
 //////////
 
+client.on("message", message => {
+  if (message.content.startsWith(prefix + "lock")) {
+    let blackjack = "created by MrRobot";
+    if (!message.guild.member(message.author).hasPermission("MANAGE_CHANNELS"))
+      return message.channel.send("**Please Check Your Permissions**");
+    message.channel
+      .createOverwrite(message.guild.id, { SEND_MESSAGES: false })
+      .then(() => {
+        const embed = new Discord.MessageEmbed()
+          .setThumbnail(message.author.avatarURL())
+          .setTitle("**locked Channel :lock:**")
+          .addField("Guild name", message.guild.name)
+          .addField("Channel", `${message.channel.name}`)
+          .addField("Moderation", `<@${message.author.id}>`, true)
+          .setColor("RANDOM");
+        return message.channel.send(embed);
+      });
+  }
+});
+   
+client.on("message", message => {
+  if (message.content.startsWith(prefix + "unlock")) {
+    let blackjack = "created by MrRobot";
+    if (!message.member.hasPermission("MANAGE_CHANNELS"))
+      return message.channel.send("**Please Check Your Permission**");
+    message.channel
+      .createOverwrite(message.guild.id, { SEND_MESSAGES: true })
+      .then(() => {
+        const embed = new Discord.MessageEmbed()
+          .setThumbnail(message.author.avatarURL())
+          .setTitle("**Unlocked Channel 🔓**")
+          .addField("Guild name", message.guild.name)
+          .addField("Channel", message.channel.name)
+          .addField("Moderation", `<@${message.author.id}>`, true)
+          .setColor("RANDOM");
+        return message.channel.send(embed);
+      });
+  }
+});
 
-      client.on('message', message => {
-
- 
-      if(message.content === prefix + "lock") {
-if(!message.member.hasPermission('MANAGE_CHANNELS')) return
-        message.delete()
-                    
-        if(!message.channel.guild) return 
- 
- let embed = new Discord.MessageEmbed()
-        
-      
-              .setFooter('')       
-                .setColor('BLACK') 
-                .setTitle('CHANNEL CLOSED')
-        message.channel.send(embed)
-         
-        
-        
-    
-
-             message.channel.updateOverwrite(message.guild.id, {
-
-            SEND_MESSAGES: false
-             })}
- 
-              })
-
-
-client.on('message', message => {
-      if(message.content === prefix + "unlock") { 
-        if(!message.member.hasPermission('MANAGE_CHANNELS')) return 
-        message.delete()
-                    
-        if(!message.channel.guild) return message.reply('SORRY IM IN SERVER');
- let embed = new Discord.MessageEmbed()
-                     .setFooter('')
-                .setColor('BLACK') 
-                .setTitle('CHANNEL NOW OPEN')
-        message.channel.send(embed)
-         
-             message.channel.updateOverwrite(message.guild.id, {
-
-            SEND_MESSAGES: true
-             })}
- 
-              })
-
-
+client.on("message", msg => {
+  if (msg.content === prefix + "lockall") {
+    if (!msg.member.hasPermission("MANAGE_CHANNELS"))  return;
+    msg.guild.channels.cache.forEach(c => {
+      c.createOverwrite(msg.guild.id, {
+        SEND_MESSAGES: false
+      });
+    });
+    msg.channel.send("Done locked all");
+  }
+});
 ////////////
 
 
@@ -354,7 +355,7 @@ client.on('message', message => {
 
                 
 client.on("message", async message  => {
-if(message.content.startsWith(prefix+"server info")) {
+if(message.content.startsWith(prefix+"serverinfo")) {
 
   if(message.author.bot) return;
 if(!message.channel.guild) return;
@@ -1553,14 +1554,26 @@ client.on("message", message => {
 
 
       
-client.on("guildMemberAdd", async member => {
-  let channel = member.guild.channels.cache.find(c => c.name === 'welcome')
-  let WELCOME = new Discord.MessageEmbed()
-  .setTitle('New User Has Joined!')
-  .setDescription(`Welcome To Our Server ${member.user} we are happy to have you! you are member number ${member.guild.memberCount}!`)
-  .setColor('BLUE')
-  .setThumbnail(client.user.avatarURL)
-  .setTimestamp()
-  .setFooter('Thanks For Joining!')
-  channel.send(WELCOME)
-})
+client.on("message", async message => {
+  if (message.content.startsWith(prefix + "settopic")) {
+    if (!message.member.hasPermission("ADMINISTRATOR"))
+      return message.channel.send(
+        "**You need Administrator permission to use this command!**"
+      );
+    let topic = message.content
+      .split(" ")
+      .slice(1)
+      .join(" ");
+    if (!topic) return message.channel.send("**Shte bnwsa bo danany Topic**");
+    message.channel.setTopic(topic);
+    const embed = new Discord.MessageEmbed()
+      .setTitle("**Done check Description channel**")
+      .addField("Message", `${topic}`)
+      .addField("Channel", message.channel.name)
+      .addField("By", message.author.tag)
+      .setColor("RANDOM")
+      .setFooter("");
+    message.channel.send(embed);
+  }
+});
+
