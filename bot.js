@@ -40,26 +40,9 @@ setInterval(() => {
   if (message.content === prefix + "help") {
    const embed = new Discord.MessageEmbed()
     .setColor("#c219d8")
-    .setDescription(`
-__Security Commands__ 
-> ${prefix}anti kick - [Number]
-> ${prefix}anti ban - [Number]
-> ${prefix}anti roleC - [Number]
-> ${prefix}anti roleD - [Number]
-> ${prefix}anti channelC - [Number]
-> ${prefix}anti channelD - [Number]
-> ${prefix}anti bot - on/off]
-> ${prefix}setting
-__Info Commands__ 
-> user info , server info , 
-> servers , role , channel info 
-> my invites , badeg , avatar , 
-__Moderation Commands__ 
-> lock , unlock , clear , ban , kick
-> unban , mute , unmute , bans
-__This is a little prefix__
-> [ ${prefix} ]
-`)
+    .addField("Security Number", `\`anti kick, anti ban, anti roleC, anti roleD, anti channelC, anti channelD\``)
+    .addField("Others", `\`user info, server info, servers , role info, channel info, my invites, badeg, avatar\``) 
+    .addField("Moderation", `\`lock, unlock, clear, ban, kick, unban, mute, unmute, bans\``)
     message.channel.send(embed);
     message.react("✅");
   }
