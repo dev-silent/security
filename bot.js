@@ -1629,7 +1629,7 @@ client.on('message', message => {
   let embed = new MessageEmbed()
 .setColor("#146DF6")
   .setAuthor(client.user.username, client.user.avatarURL())
-  .setTitle(`Thx`)
-  .setDescription(`Thx For Invite Me To Your Server: ${guild.name} To View List Of Command Type .help`)
+  .setTitle(`hello`)
+  .setDescription(`Thx For Invite Me To Your Server To View List Of Command Type .help`)
   guild.owner.send(embed);
 });
