@@ -41,7 +41,7 @@ setInterval(() => {
    const embed = new Discord.MessageEmbed()
     .setColor("#c219d8")
     .addField("Security Number", `\`anti kick, anti ban, anti roleC, anti roleD, anti channelC, anti channelD\``)
-    .addField("Others", `\`user info, server info, servers , role info, channel info, my invites, badeg, avatar\``) 
+    .addField("Others", `\`userinfo, serverinfo, servers , roleinfo, channelinfo, invites, badeg, avatar\``) 
     .addField("Moderation", `\`lock, unlock, clear, ban, kick, unban, mute, unmute, bans, lockall, unlockall\``)
     message.channel.send(embed);
     message.react("✅");
