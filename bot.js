@@ -337,16 +337,29 @@ client.on("message", message => {
   }
 });
 
-client.on("message", msg => {
-  if (msg.content === prefix + "lockall") {
-    if (!msg.member.hasPermission("MANAGE_CHANNELS"))
-      return msg.channel.send("**Please Check Your Permission**");
-    msg.guild.channels.cache.forEach(c => {
-      c.createOverwrite(msg.guild.id, {
+client.on("message", message => {
+  if (message.content === prefix + "lockall") {
+    if (!message.member.hasPermission("MANAGE_CHANNELS"))
+      return message.channel.send("**Please Check Your Permission**");
+    message.guild.channels.cache.forEach(c => {
+      c.createOverwrite(message.guild.id, {
         SEND_MESSAGES: false
       });
     });
-    msg.channel.send("**✅Done Locked Total Channels On Server!**");
+    message.channel.send("**✅Done Locked Total Channels On Server!**");
+  }
+});
+
+client.on("message", message => {
+  if (message.content === prefix + "unlockall") {
+    if (!message.member.hasPermission("MANAGE_CHANNELS"))
+      return message.channel.send("**Please Check Your Permission**");
+    message.guild.channels.cache.forEach(c => {
+      c.createOverwrite(message.guild.id, {
+        SEND_MESSAGES: true
+      });
+    });
+    message.channel.send("**✅Done Unlocked Total Channels On Server**");
   }
 });
 ////////////
