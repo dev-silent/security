@@ -1605,7 +1605,5 @@ let replies = ["هيه حظوظ والطيب يرد خسران من ذيچ ال�
     message.channel.send(replies[result]).then(message => {
 			message.react('').then(r => {
 				message.react('');
-           });
-          });
-      }
-}
+  }
+});
