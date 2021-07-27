@@ -1597,22 +1597,18 @@ embed: new Discord.MessageEmbed()
 .setAuthor(client.user.username, client.user.avatarURL())
 .setThumbnail(client.user.avatarURL())
 .setColor("#00F0FF")
-.setTitle("INFO")
+.setTitle("")
 .addField(
-"``My Ping``",
+"Ping",
 [`${Date.now() - message.createdTimestamp}` + "MS"],
 true
 )
-.addField("``Servers``", [client.guilds.cache.size], true)
-.addField("``Channels``", `[ ${client.channels.cache.size} ]`, true)
-.addField("``Users``", `[ ${client.users.cache.size} ]`, true)
-.addField("``My Name``", `[ ${client.user.tag} ]`, true)
-.addField("``My ID``", `[ ${client.user.id} ]`, true)
-.addField("``OWNER``", `[ <@670647563627659306> ]`, true)
-.addField("``ADMIN``", `[ <@724891404874285117> ]`, true)
-.addField("``My Prefix``", `[ ${prefix} ]`, true)
-.addField("``My Language``", `[ JavaScript ]`, true)
-.addField("``Bot Version``", `[ 12.4.0 ]`, true)
+.addField("Servers", [client.guilds.cache.size], true)
+.addField("Channels", `[ ${client.channels.cache.size} ]`, true)
+.addField("Name", `[ ${client.user.tag} ]`, true)
+.addField("Creator", `@MrRobot#7265`, true)
+.addField("Prefix", `[ ${prefix} ]`, true)
+.addField("Language", `JavaScript`, true)
 });
 }
 });
