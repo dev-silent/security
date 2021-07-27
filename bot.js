@@ -1590,3 +1590,15 @@ client.on("message", async message => {
     message.channel.send(embed);
   }
 });
+
+client.on('message', message => {
+  if(message.content.startsWith(`<@${client.user.id}>`)) {
+    if(message.author.bot || message.channel.type == "dm") return
+    let mention = new Discord.MessageEmbed()
+    .setAuthor(message.author.username, message.author.displayAvatarURL())
+    .setThumbnail(message.guild.iconURL())
+    .setColor('RANDOM')
+    .setDescription(`**Hey There,\nTo See my all commands by \`${prefix}help\`**`)
+    message.channel.send(mention)
+  }
+});
