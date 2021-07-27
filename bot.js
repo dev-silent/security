@@ -284,7 +284,7 @@ const member = message.mentions.members.last() || message.guild.members.cache.ge
       if (member.nickname !== null) embed.addField("Nickname", member.nickname)
       embed.addField("__**Join Date**__", moment(member.user.joinedAt).format("LLLL"))
         .addField("__**Create Date**__", moment(member.user.createdAt).format("LLLL"))
-        .addField("__**Other Information**__", `ID: \`${member.user.id}\`\n#Discriminator: ${member.user.discriminator}\nBot: ${member.user.bot}\nDeleted User: ${member.deleted}`)
+        .addField("__**Other Information**__", `ID: \`${member.user.id}\`\nDiscriminator: #${member.user.discriminator}\nBot: ${member.user.bot}\nDeleted User: ${member.deleted}`)
         .addField("__**Badges**__", newbadges.join(", ").toLowerCase() || "None")
         .setFooter(member.user.presence.status)
 
