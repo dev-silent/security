@@ -38,7 +38,9 @@ setInterval(() => {
   
       client.on("message", message => {
   if (message.content === prefix + "help") {
-    let Dashboard = `
+   const embed = new Discord.MessageEmbed()
+    .setColor("#c219d8")
+    .setDescription(`
 __Security Commands__ 
 > ${prefix}anti kick - [Number]
 > ${prefix}anti ban - [Number]
@@ -57,18 +59,8 @@ __Moderation Commands__
 > unban , mute , unmute , bans
 __This is a little prefix__
 > [ ${prefix} ]
-`;
-    var addserver = `https://discord.com/api/oauth2/authorize?client_id=764487416748310570&permissions=8&scope=bot`;
-    var SUPPORT = `https://discord.gg/Zhwg47uFun`;
-    var WEBSITE = `https://securitexbot.wixsite.com/security`;
-    var EMBED = new Discord.MessageEmbed()
-      .setTitle(`${message.author.username}`)
-      .setDescription(
-        `${Dashboard}
-  **[invite bot ](${addserver})** | **[ Server Suppurt](${SUPPORT})** | **[ website](${WEBSITE})**`
-      )
-      .setImage("https://cdn.discordapp.com/attachments/769678873197281300/819928547677569034/image0.gif");
-    message.channel.send(EMBED);
+`)
+    message.channel.send(embed);
     message.react("✅");
   }
 });
