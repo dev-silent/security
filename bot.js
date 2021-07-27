@@ -1591,10 +1591,11 @@ client.on("message", async message => {
   }
 });
 
-client.on('message',async  message => {
-  if(message.content.startsWith(prefix + "list")) {
-        let notAnimated = [];
-        let animated = [];
+client.on('message', message => {
+     if (message.content  === prefix + "emojilist") {
+     let embed = new Discord.MessageEmbed()
+     let notAnimated = [];
+     let animated = [];
         message.guild.emojis.cache.forEach(async emoji => {
           if (emoji.animated) animated.push(emoji.toString());
           else notAnimated.push(emoji.toString());
@@ -1604,5 +1605,5 @@ client.on('message',async  message => {
         message.channel.send('**__ANIMATED  :__**\n' + animated.join(' ') + '\n**__NORMAL:__**\n' + notAnimated.join(' '), {split:true});
       } catch (err) {
         message.channel.send('Their was an error!\n' + err).catch();
-  }
-});
+    }
+}); 
