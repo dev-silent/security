@@ -1590,6 +1590,32 @@ client.on("message", async message => {
     message.channel.send(embed);
   }
 });
+client.on("message", message => {
+if (message.content.startsWith(prefix + "botinfo")) {
+message.channel.send({
+embed: new Discord.MessageEmbed()
+.setAuthor(client.user.username, client.user.avatarURL())
+.setThumbnail(client.user.avatarURL())
+.setColor("#00F0FF")
+.setTitle("INFO")
+.addField(
+"``My Ping``",
+[`${Date.now() - message.createdTimestamp}` + "MS"],
+true
+)
+.addField("``Servers``", [client.guilds.cache.size], true)
+.addField("``Channels``", `[ ${client.channels.cache.size} ]`, true)
+.addField("``Users``", `[ ${client.users.cache.size} ]`, true)
+.addField("``My Name``", `[ ${client.user.tag} ]`, true)
+.addField("``My ID``", `[ ${client.user.id} ]`, true)
+.addField("``OWNER``", `[ <@670647563627659306> ]`, true)
+.addField("``ADMIN``", `[ <@724891404874285117> ]`, true)
+.addField("``My Prefix``", `[ ${prefix} ]`, true)
+.addField("``My Language``", `[ JavaScript ]`, true)
+.addField("``Bot Version``", `[ 12.4.0 ]`, true)
+});
+}
+});
 
 client.on('message', message => {
   if(message.content.startsWith(`<@${client.user.id}>`)) {
