@@ -339,13 +339,14 @@ client.on("message", message => {
 
 client.on("message", msg => {
   if (msg.content === prefix + "lockall") {
-    if (!msg.member.hasPermission("MANAGE_CHANNELS"))  return;
+    if (!msg.member.hasPermission("MANAGE_CHANNELS"))
+      return msg.channel.send("**Please Check Your Permission**");
     msg.guild.channels.cache.forEach(c => {
       c.createOverwrite(msg.guild.id, {
         SEND_MESSAGES: false
       });
     });
-    msg.channel.send("Done locked all");
+    msg.channel.send("**✅Done Locked Total Channels On Server!**");
   }
 });
 ////////////
