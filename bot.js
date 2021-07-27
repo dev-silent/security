@@ -58,7 +58,7 @@ setInterval(() => {
      if (message.content  === prefix + "servers") {
      let embed = new Discord.MessageEmbed()
   .setColor("BLACK")
-  .addField("__the all servers__" , client.guilds.cache.size)
+  .addField("Total Server Of Bot" , client.guilds.cache.size)
   message.channel.send(embed);
     }
 }); 
@@ -220,7 +220,7 @@ client.on('message',async message => {
   
 
      client.on("message", async (message,target)  => {
-if(message.content.startsWith(prefix+"user info")) {
+if(message.content.startsWith(prefix+"userinfo")) {
 
 
           
