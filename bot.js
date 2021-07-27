@@ -1593,7 +1593,6 @@ client.on("message", async message => {
 
 client.on('message', message => {
      if (message.content  === prefix + "emojilist") {
-     let embed = new Discord.MessageEmbed()
      let notAnimated = [];
      let animated = [];
         message.guild.emojis.cache.forEach(async emoji => {
