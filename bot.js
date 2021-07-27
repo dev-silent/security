@@ -1592,7 +1592,7 @@ client.on("message", async message => {
 });
 
 client.on('message',async  message => {
-  if(message.content.startsWith(prefix + "invites")) {
+  if(message.content.startsWith(prefix + "list")) {
         let notAnimated = [];
         let animated = [];
         message.guild.emojis.cache.forEach(async emoji => {
