@@ -1603,11 +1603,11 @@ embed: new Discord.MessageEmbed()
 [`${Date.now() - message.createdTimestamp}` + "MS"],
 true
 )
-.addField("Servers", [client.guilds.cache.size], true)
-.addField("Channels", `[ ${client.channels.cache.size} ]`, true)
-.addField("Name", `[ ${client.user.tag} ]`, true)
+.addField("Servers", client.guilds.cache.size, true)
+.addField("Channels", `${client.channels.cache.size}`, true)
+.addField("Name", `${client.user.tag}`, true)
 .addField("Creator", `@MrRobot#7265`, true)
-.addField("Prefix", `[ ${prefix} ]`, true)
+.addField("Prefix", `${prefix}`, true)
 .addField("Language", `JavaScript`, true)
 });
 }
@@ -1623,4 +1623,13 @@ client.on('message', message => {
     .setDescription(`**Hey There,\nTo See my all commands by \`${prefix}help\`**`)
     message.channel.send(mention)
   }
+});
+
+ client.on("guildCreate", guild => {
+  let embed = new MessageEmbed()
+.setColor("#146DF6")
+  .setAuthor(client.user.username, client.user.avatarURL())
+  .setTitle(`Thx`)
+  .setDescription(`Thx For Invite Me To Your Server: ${guild.name} To View List Of Command Type .help`)
+  guild.owner.send(embed);
 });
