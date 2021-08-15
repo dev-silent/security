@@ -21,7 +21,7 @@ const cmd = require("node-cmd");
 const prefix = "-";
 const cooldown = new Set();
 const cdtime = 7;
-client.login("ODY4Nzk3NjI0ODI2ODYzNjE2.YP041w.sosvKJh9wsKN91fO-ad_VkCeSXI");
+client.login("ODcwNjU1NTMzMjkwNTAwMTA2.YQP7Jw.R5Wl57dq1h_6uefCyYJ03nLydq8");
 client.on("ready", () => {
   console.log(`${client.user.tag}`);
 });
