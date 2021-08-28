@@ -1,7 +1,7 @@
 {
-  "name": "Mr.BAD",
+  "name": "MrRobot",
   "version": "0.0.1",
-  "description": "Mr.BAD",
+  "description": "MrRobot",
   "main": "bot.js",
   "scripts": {
     "start": "node bot.js"
