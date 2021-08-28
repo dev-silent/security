@@ -1,4 +1,4 @@
-dependencies:
+dependencies:  
   canvas: 2.7.0
   dateformat: 4.5.1
   discord-anti-spam: 2.5.0
