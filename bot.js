@@ -20,8 +20,8 @@ const Discord = require("discord.js");
 const cmd = require("node-cmd");
 const prefix = "-";
 const cooldown = new Set();
-const cdtime = 7;
-client.login("ODcwNjU1NTMzMjkwNTAwMTA2.YQP7Jw.R5Wl57dq1h_6uefCyYJ03nLydq8");
+const cdtime = 5;
+client.login("");
 client.on("ready", () => {
   console.log(`${client.user.tag}`);
 });
@@ -52,7 +52,7 @@ setInterval(() => {
 
   
   
-  //////////
+  //////////mrrobot
   
        client.on('message', message => {
      if (message.content  === prefix + "servers") {
